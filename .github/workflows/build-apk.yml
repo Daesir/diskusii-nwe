@@ -18,7 +18,8 @@ jobs:
       - name: Siapkan folder www
         run: |
           mkdir www
-          cp -r index.html sw.js manifest.webmanifest css fonts icons js www/
+          rsync -a --exclude='.git' --exclude='.github' --exclude='www' --exclude='README.md' ./ www/
+          ls -R www | head -60
       - name: Pasang Capacitor
         run: |
           npm init -y
